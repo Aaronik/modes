@@ -45,8 +45,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p onClick={Tone.start}>
-          Modes
+        <h2>Modes</h2>
+        <p>
+          (Click on them)
         </p>
         {
           scales.map((scale, index) => <Scale scale={scale} key={'scale-' + index}/>)
@@ -78,7 +79,7 @@ function Scale(props: ScaleProps) {
     }).filter(Boolean) as string[]
 
     notes.forEach((note, index) => {
-      synth.triggerAttackRelease(note, "8n", Tone.now() + (index / 2))
+      synth.triggerAttackRelease(note, "8n", Tone.now() + (index / 3))
     })
   }
 

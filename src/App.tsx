@@ -1,10 +1,7 @@
 import './App.css'
 import * as Tone from 'tone'
 
-// @ts-ignore
-window['Tone'] = Tone
 const synth = new Tone.Synth().toDestination()
-// Tone.Transport.start()
 
 const generateAllScales = (): ScaleArray[] => {
   const scales: ScaleArray[] = []

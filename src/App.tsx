@@ -1,4 +1,10 @@
 import './App.css'
+import * as Tone from 'tone'
+
+// @ts-ignore
+window['Tone'] = Tone
+const synth = new Tone.Synth().toDestination()
+// Tone.Transport.start()
 
 const generateAllScales = (): ScaleArray[] => {
   const scales: ScaleArray[] = []
@@ -8,33 +14,45 @@ const generateAllScales = (): ScaleArray[] => {
   for (let i = Math.pow(2, 12); i < Math.pow(2, 13); i++) {
     const base2 = i.toString(2)
     const scale = base2.split('').map(bit => !!+bit) as ScaleArray
-    console.log(scale)
     scales.push(scale)
   }
 
-  console.log('all scales length:', scales.length)
   return scales
 }
 
-// const ALL_SCALES: ScaleArray[] = [
-//   [true, false, true, false, true, true, false, true, false, true, false, true, true] // TODO
-// ]
-
 const ALL_SCALES = generateAllScales()
+const NOTES = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', 'C5']
 
-const SCALE_FILTERS = {
 
+type ScaleFilter = (scale: ScaleArray) => boolean
+
+const SCALE_FILTERS: { [name: string]: ScaleFilter } = {
+
+  endsInTonic: (scale: ScaleArray) => {
+    return scale[scale.length - 1]
+  },
+
+  has7Notes: (scale) => {
+    return scale.filter(bit => bit).length === 8
+  }
 }
 
 function App() {
+
+  const scales = ALL_SCALES
+    .filter(SCALE_FILTERS.endsInTonic)
+    .filter(SCALE_FILTERS.has7Notes)
+
+  console.log('working with:', scales.length, 'scales.')
+
   return (
     <div className="App">
       <header className="App-header">
-        <p>
+        <p onClick={Tone.start}>
           Modes
         </p>
         {
-          ALL_SCALES.map(scale => Scale({ scale }))
+          scales.map((scale, index) => <Scale scale={scale} key={'scale-' + index}/>)
         }
       </header>
     </div>
@@ -55,8 +73,16 @@ function Scale(props: ScaleProps) {
     cursor: 'pointer'
   }
 
-  const onClick = () => {
-    alert(props.scale.toString())
+  const onClick = async () => {
+    await Tone.start()
+
+    const notes = props.scale.map((bit, index) => {
+      return bit ? NOTES[index] : null
+    }).filter(Boolean) as string[]
+
+    notes.forEach((note, index) => {
+      synth.triggerAttackRelease(note, "8n", Tone.now() + (index / 2))
+    })
   }
 
   return (

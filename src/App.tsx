@@ -1,5 +1,7 @@
 import './App.css'
 import * as Tone from 'tone'
+import Checkbox from './Checkbox'
+import { useState } from 'react'
 
 const synth = new Tone.Synth().toDestination()
 
@@ -20,35 +22,49 @@ const generateAllScales = (): ScaleArray[] => {
 const ALL_SCALES = generateAllScales()
 const NOTES = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', 'C5']
 
-
-type ScaleFilter = (scale: ScaleArray) => boolean
-
-const SCALE_FILTERS: { [name: string]: ScaleFilter } = {
+const SCALE_FILTERS = {
 
   endsInTonic: (scale: ScaleArray) => {
     return scale[scale.length - 1]
   },
 
-  has7Notes: (scale) => {
-    return scale.filter(bit => bit).length === 8
-  }
+  hasNNotes: (scaleLengths: number[]) => (scale: ScaleArray) => {
+    return scaleLengths.includes(scale.filter(bit => bit).length - 1)
+  },
+
 }
 
 function App() {
 
+  const [ scaleLengths, setScaleLengths ] = useState<number[]>([5,6,7,8])
+
   const scales = ALL_SCALES
     .filter(SCALE_FILTERS.endsInTonic)
-    .filter(SCALE_FILTERS.has7Notes)
+    .filter(SCALE_FILTERS.hasNNotes(scaleLengths))
 
-  console.log('working with:', scales.length, 'scales.')
+  const toggleNoteNumber = (scaleLs: typeof scaleLengths, n: number) => {
+    console.log('toggleNoteNumber called with:', n, ', scaleLengths:', scaleLengths)
+    if (scaleLs.includes(n)) {
+      // If we have the number wanting to be toggled inside of the array (the array of note numbers),
+      // then we want to get rid of that one
+      const newLengths = scaleLs.filter(x => x !== n)
+      console.log('scaleLs after removing number:', newLengths)
+      setScaleLengths([...newLengths])
+    } else {
+      // Otherwise, we want to add that number into the array
+      scaleLs.push(n)
+      console.log('scaleLs after adding number:', scaleLs)
+      setScaleLengths([...scaleLs])
+    }
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <h2>Modes</h2>
-        <p>
-          (Click on them)
-        </p>
+        <Checkboxes scaleLengths={scaleLengths} toggleNoteNumber={toggleNoteNumber}/>
+        <p>({scales.length} scales)</p>
+        <p>(Click on them)</p>
         {
           scales.map((scale, index) => <Scale scale={scale} key={'scale-' + index}/>)
         }
@@ -85,9 +101,32 @@ function Scale(props: ScaleProps) {
 
   return (
     <code style={style} onClick={onClick}>
-    [
-      {props.scale.map(note => note ? 'x' : 'o')}
-    ]
+      [
+        {props.scale.map(note => note ? 'x' : 'o')}
+      ]
     </code>
   )
 }
+
+type CheckboxesProps = {
+  scaleLengths: number[]
+  toggleNoteNumber: (scaleLengths: number[], n: number) => void
+}
+
+function Checkboxes(props: CheckboxesProps) {
+
+  const { scaleLengths, toggleNoteNumber } = props
+
+  return (
+    <p>
+      <Checkbox label='5 notes' checked={scaleLengths.includes(5)} onChange={() => toggleNoteNumber(scaleLengths, 5)}/>
+      <br/>
+      <Checkbox label='6 notes' checked={scaleLengths.includes(6)} onChange={() => toggleNoteNumber(scaleLengths, 6)}/>
+      <br/>
+      <Checkbox label='7 notes' checked={scaleLengths.includes(7)} onChange={() => toggleNoteNumber(scaleLengths, 7)}/>
+      <br/>
+      <Checkbox label='8 notes' checked={scaleLengths.includes(8)} onChange={() => toggleNoteNumber(scaleLengths, 8)}/>
+    </p>
+  )
+}
+

@@ -64,7 +64,7 @@ function App() {
         <h2>Modes</h2>
         <Checkboxes scaleLengths={scaleLengths} toggleNoteNumber={toggleNoteNumber}/>
         <p>({scales.length} scales)</p>
-        <p>(Click on them)</p>
+        <p>(Click to listen)</p>
         {
           scales.map((scale, index) => <Scale scale={scale} key={'scale-' + index}/>)
         }

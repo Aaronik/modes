@@ -18,3 +18,34 @@ export const ALL_SCALES = generateAllScales()
 
 export const NOTES = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', 'C5']
 
+export const SCALE_NAMES = [
+  { id: 'xoxoxxoxoxoxx', name: 'major/ionian'},
+  { id: 'xoxxoxoxoxoxx', name: 'dorian'},
+  { id: 'xxoxoxoxoxoxx', name: 'phrygian'},
+  { id: 'xoxoxoxxoxoxx', name: 'lydian'},
+  { id: 'xoxoxxoxoxxox', name: 'mixolydian'},
+  { id: 'xoxxoxoxxoxox', name: 'minor/aolian'},
+  { id: 'xoxxoxxoxoxox', name: 'locrian'},
+
+  { id: 'xoxoxooxoxoox', name: 'major pentatonic'},
+  { id: 'xooxoxoxooxox', name: 'minor pentatonic'},
+  { id: 'xoxooxoxooxox', name: 'dorian pentatonic'},
+  { id: 'xooxoxooxoxox', name: 'phrygian pentatonic'},
+  { id: 'xoxooxoxoxoox', name: 'mixolydian pentatonic'},
+
+  { id: 'xoxxoxxoxxoxx', name: 'diminished'},
+  { id: 'xxoxxoxxoxxox', name: 'dorian diminished'},
+
+  { id: 'xoxoxoxoxoxox', name: 'whole tone'},
+
+  { id: 'xoxxoxoxxooxx', name: 'harmonic minor'},
+  { id: 'xxoxoxxooxxox', name: 'harmonic dorian'},
+  { id: 'xoxoxxooxxoxx', name: 'harmonic phrygian'},
+  { id: 'xoxxooxxoxxox', name: 'harmonic lydian'},
+  { id: 'xxooxxoxxoxox', name: 'harmonic mixolydian'},
+  { id: 'xooxxoxxoxoxx', name: 'harmonic aolian'},
+  { id: 'xxoxxoxoxxoox', name: 'harmonic locrian'},
+
+  { id: 'xxooxxoxxoxox', name: 'arabic'},
+]
+

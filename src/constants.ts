@@ -1,5 +1,6 @@
 import { ScaleArray } from "./types"
 
+// All possible scales of any size within our chromatic system (12tet [12 ton equal temperment])
 const generateAllScales = (): ScaleArray[] => {
   const scales: ScaleArray[] = []
 
@@ -41,6 +42,7 @@ export const SCALE_NAMES = [
   { id: 'xoxxooxxoxoxx', name: 'lydian b3'},
   { id: 'xxooxxoxoxxox', name: 'mixolydian b2'},
   { id: 'xooxxoxoxxoxx', name: 'lydian augmented #2'},
+  { id: 'xxoxoxxoxxoox', name: 'locrian o7'},
 
   { id: 'xoxxoxoxoxoxx', name: 'melodic minor'},
   { id: 'xxoxoxoxoxxox', name: 'dorian b2'},

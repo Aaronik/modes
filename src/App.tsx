@@ -8,13 +8,48 @@ import { generateScaleId } from './util'
 import { ScaleArray } from './types'
 import './initialize' // populate default scale names
 
+const sortScalesByModeGroup = (scales: ScaleArray[]): ScaleArray[] => {
+  type TwelveLetterString = string
+  type ModeGroup = TwelveLetterString[][]
+  let modeGroups: ModeGroup = []
+
+  scales.forEach(scale => {
+    const id = generateScaleId(scale).slice(0, 12) // We don't want the last x here
+    const doubledId = id + id
+
+    // Now we take one item from each existing mode group and see
+    // if it matches any substring of the doubledId
+    const anyFit: boolean = modeGroups.some(modeGroup => {
+      if (doubledId.match(modeGroup[0])) {
+        modeGroup.push(id)
+        return true
+      } else return false
+    })
+
+    // If none of them fit, it's a new mode group
+    if (!anyFit) {
+      modeGroups.push([id])
+    }
+  })
+
+  // Transform our 12 x's or o's into a ScaleArray
+  const flattenedModeGroups = modeGroups.flat()
+  return flattenedModeGroups.map(modeGroup => {
+    return modeGroup.split('').map(chr => chr === 'x').concat([true])
+  }) as ScaleArray[]
+
+}
+
 function App() {
 
-  const [scaleLengths, setScaleLengths] = useState<number[]>([5, 6, 7, 8])
+  const [scaleLengths, setScaleLengths] = useState<number[]>([0,1,2,3,4,5,6,7,8,9,10,11,12])
+  // const [scaleLengths, setScaleLengths] = useState<number[]>([7])
 
-  const scales = ALL_SCALES
+  let scales = ALL_SCALES
     .filter(SCALE_FILTERS.endsInTonic)
     .filter(SCALE_FILTERS.hasNNotes(scaleLengths))
+
+  scales = sortScalesByModeGroup(scales)
 
   const toggleNoteNumber = (scaleLs: typeof scaleLengths, n: number) => {
     if (scaleLs.includes(n)) {

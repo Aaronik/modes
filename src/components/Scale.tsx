@@ -15,6 +15,7 @@ export default function Scale(props: ScaleProps) {
   const { scale, name, onNameChange } = props
 
   const style = {
+    display: 'inline-block',
     alignSelf: 'flex-start',
     marginLeft: '40vw',
   }

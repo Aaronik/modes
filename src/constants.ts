@@ -71,5 +71,7 @@ export const SCALE_NAMES = [
 
   { id: 'xoxoxoxoxoxox', name: 'whole tone'},
 
+  { id: 'xoooxoooxooox', name: 'augmented'},
+
 ]
 

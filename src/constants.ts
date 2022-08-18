@@ -20,32 +20,54 @@ export const NOTES = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 
 
 export const SCALE_NAMES = [
   { id: 'xoxoxxoxoxoxx', name: 'major/ionian'},
-  { id: 'xoxxoxoxoxoxx', name: 'dorian'},
-  { id: 'xxoxoxoxoxoxx', name: 'phrygian'},
+  { id: 'xoxxoxoxoxxox', name: 'dorian'},
+  { id: 'xxoxoxoxxoxox', name: 'phrygian'},
   { id: 'xoxoxoxxoxoxx', name: 'lydian'},
   { id: 'xoxoxxoxoxxox', name: 'mixolydian'},
-  { id: 'xoxxoxoxxoxox', name: 'minor/aolian'},
-  { id: 'xoxxoxxoxoxox', name: 'locrian'},
+  { id: 'xoxxoxoxxoxox', name: 'minor/aeolian'},
+  { id: 'xxoxoxxoxoxox', name: 'locrian'},
+
+  { id: 'xoxxoxoxxooxx', name: 'harmonic minor'},
+  { id: 'xxoxoxxooxxox', name: 'locrian #6'},
+  { id: 'xoxoxxooxxoxx', name: 'ionian #5'},
+  { id: 'xoxxooxxoxxox', name: 'dorian #4'},
+  { id: 'xxooxxoxxoxox', name: 'phrygian dominant'},
+  { id: 'xooxxoxxoxoxx', name: 'lydian #2'},
+  { id: 'xxoxxoxoxxoox', name: 'altered o7'},
+
+  { id: 'xoxoxxoxxooxx', name: 'harmonic major'},
+  { id: 'xoxxoxxooxxox', name: 'dorian b5'},
+  { id: 'xxoxxooxxoxox', name: 'phrygian b4'},
+  { id: 'xoxxooxxoxoxx', name: 'lydian b3'},
+  { id: 'xxooxxoxoxxox', name: 'mixolydian b2'},
+  { id: 'xooxxoxoxxoxx', name: 'lydian augmented #2'},
+
+  { id: 'xoxxoxoxoxoxx', name: 'melodic minor'},
+  { id: 'xxoxoxoxoxxox', name: 'dorian b2'},
+  { id: 'xoxoxoxoxxoxx', name: 'lydian augmented'},
+  { id: 'xoxoxoxxoxxox', name: 'lydian dominant'},
+  { id: 'xoxoxxoxxoxox', name: 'mixolydian b6'},
+  { id: 'xoxxoxxoxoxox', name: 'aeolian b5'},
+  { id: 'xxoxxoxoxoxox', name: 'altered scale'},
+
+  // TODO
+  // * Double harmonic
+  // * Harmonic Phrygian
+  // * Harmonic Locrian
+  // * Harmonic Mixolydian
+  // * Harmonic Lydian
+  // * Neopolitan
 
   { id: 'xoxoxooxoxoox', name: 'major pentatonic'},
-  { id: 'xooxoxoxooxox', name: 'minor pentatonic'},
   { id: 'xoxooxoxooxox', name: 'dorian pentatonic'},
   { id: 'xooxoxooxoxox', name: 'phrygian pentatonic'},
   { id: 'xoxooxoxoxoox', name: 'mixolydian pentatonic'},
+  { id: 'xooxoxoxooxox', name: 'minor pentatonic'},
 
-  { id: 'xoxxoxxoxxoxx', name: 'diminished'},
-  { id: 'xxoxxoxxoxxox', name: 'dorian diminished'},
+  { id: 'xoxxoxxoxxoxx', name: 'diminished/octotonic'},
+  { id: 'xxoxxoxxoxxox', name: 'diminished/octotonic'},
 
   { id: 'xoxoxoxoxoxox', name: 'whole tone'},
 
-  { id: 'xoxxoxoxxooxx', name: 'harmonic minor'},
-  { id: 'xxoxoxxooxxox', name: 'harmonic dorian'},
-  { id: 'xoxoxxooxxoxx', name: 'harmonic phrygian'},
-  { id: 'xoxxooxxoxxox', name: 'harmonic lydian'},
-  { id: 'xxooxxoxxoxox', name: 'harmonic mixolydian'},
-  { id: 'xooxxoxxoxoxx', name: 'harmonic aolian'},
-  { id: 'xxoxxoxoxxoox', name: 'harmonic locrian'},
-
-  { id: 'xxooxxoxxoxox', name: 'arabic'},
 ]
 

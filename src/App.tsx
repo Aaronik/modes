@@ -7,6 +7,7 @@ import Checkboxes from './components/Checkboxes'
 import { generateScaleId } from './util'
 import { ScaleArray } from './types'
 import './initialize' // populate default scale names
+import Checkbox from './components/Checkbox'
 
 const sortScalesByModeGroup = (scales: ScaleArray[]): ScaleArray[] => {
   type TwelveLetterString = string
@@ -42,6 +43,7 @@ const sortScalesByModeGroup = (scales: ScaleArray[]): ScaleArray[] => {
 
 function App() {
 
+  const [isSortedByModeGroup, setIsSortedByModeGroup] = useState(false)
   const [scaleLengths, setScaleLengths] = useState<number[]>([0,1,2,3,4,5,6,7,8,9,10,11,12])
   // const [scaleLengths, setScaleLengths] = useState<number[]>([7])
 
@@ -49,7 +51,7 @@ function App() {
     .filter(SCALE_FILTERS.endsInTonic)
     .filter(SCALE_FILTERS.hasNNotes(scaleLengths))
 
-  scales = sortScalesByModeGroup(scales)
+  if (isSortedByModeGroup) scales = sortScalesByModeGroup(scales)
 
   const toggleNoteNumber = (scaleLs: typeof scaleLengths, n: number) => {
     if (scaleLs.includes(n)) {
@@ -68,6 +70,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>Modes</h2>
+        <Checkbox label='sort by mode group' checked={isSortedByModeGroup} onChange={() => setIsSortedByModeGroup(!isSortedByModeGroup)}/>
         <Checkboxes scaleLengths={scaleLengths} toggleNoteNumber={toggleNoteNumber} />
         <p>({scales.length} scales)</p>
         <p>[Click to listen] (Edit name)</p>

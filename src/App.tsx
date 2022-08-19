@@ -41,8 +41,30 @@ const sortScalesByModeGroup = (scales: ScaleArray[]): ScaleArray[] => {
 
 }
 
+// Assigns a numerical sharpness to a scale. Notes towards
+// the beginning are worth less, notes towards the end more,
+// linearly.
+const getSharpnessOfScale = (scale: ScaleArray): number => {
+  return scale.reduce((num, played, index) => {
+    if (played) return num + index
+    else return num
+  }, 0)
+}
+
+const sortScalesBySharpness = (scales: ScaleArray[]): ScaleArray[] => {
+  return scales.sort((scaleA, scaleB) => {
+    const scaleASharpness = getSharpnessOfScale(scaleA)
+    const scaleBSharpness = getSharpnessOfScale(scaleB)
+
+    if (scaleASharpness > scaleBSharpness) {
+      return 1
+    } else return -1
+  })
+}
+
 function App() {
 
+  const [isSortedBySharpness, setIsSortedBySharpness] = useState(true)
   const [isSortedByModeGroup, setIsSortedByModeGroup] = useState(true)
   const [scaleLengths, setScaleLengths] = useState<number[]>([7])
 
@@ -50,6 +72,7 @@ function App() {
     .filter(SCALE_FILTERS.endsInTonic)
     .filter(SCALE_FILTERS.hasNNotes(scaleLengths))
 
+  if (isSortedBySharpness) scales = sortScalesBySharpness(scales)
   if (isSortedByModeGroup) scales = sortScalesByModeGroup(scales)
 
   const toggleNoteNumber = (scaleLs: typeof scaleLengths, n: number) => {
@@ -69,6 +92,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>Modes</h2>
+        <Checkbox label='sort by sharpness' checked={isSortedBySharpness} onChange={() => setIsSortedBySharpness(!isSortedBySharpness)}/>
         <Checkbox label='sort by mode group' checked={isSortedByModeGroup} onChange={() => setIsSortedByModeGroup(!isSortedByModeGroup)}/>
         <Checkboxes scaleLengths={scaleLengths} toggleNoteNumber={toggleNoteNumber} />
         <p>({scales.length} scales)</p>

@@ -52,13 +52,41 @@ export const SCALE_NAMES = [
   { id: 'xoxxoxxoxoxox', name: 'aeolian b5'},
   { id: 'xxoxxoxoxoxox', name: 'altered scale'},
 
+  { id: 'xoxxooxxxooxx', name: 'Double Harmonic'},
+  { id: 'xxooxxxooxxox', name: 'Double Harmonic locrian'},
+  { id: 'xooxxxooxxoxx', name: 'Double Harmonic ionian'},
+  { id: 'xxxooxxoxxoox', name: 'Double Harmonic dorian'},
+  { id: 'xxooxxoxxooxx', name: 'Double Harmonic phrygian'},
+  { id: 'xooxxoxxooxxx', name: 'Double Harmonic lydian'},
+  { id: 'xxoxxooxxxoox', name: 'Double Harmonic mixolydian'},
+
+  { id: 'xxoxoxoxxooxx', name: 'Harmonic phrygian'},
+  { id: 'xoxoxoxxooxxx', name: 'Harmonic phrygian 2'},
+  { id: 'xoxoxxooxxxox', name: 'Harmonic phrygian 3'},
+  { id: 'xoxxooxxxoxox', name: 'Harmonic phrygian 4'},
+  { id: 'xxooxxxoxoxox', name: 'Harmonic phrygian 5'},
+  { id: 'xooxxxoxoxoxx', name: 'Harmonic phrygian 6'},
+  { id: 'xxxoxoxoxxoox', name: 'Harmonic phrygian 7'},
+
+  { id: 'xxoxoxxoxooxx', name: 'Harmonic locrian'},
+  { id: 'xoxoxxoxooxxx', name: 'Harmonic locrian 2'},
+  { id: 'xoxxoxooxxxox', name: 'Harmonic locrian 3'},
+  { id: 'xxoxooxxxoxox', name: 'Harmonic locrian 4'},
+  { id: 'xoxooxxxoxoxx', name: 'Harmonic locrian 5'},
+  { id: 'xooxxxoxoxxox', name: 'Harmonic locrian 6'},
+  { id: 'xxxoxoxxoxoox', name: 'Harmonic locrian 7'},
+
+  { id: 'xoxoxoxoxoxxx', name: 'Neopolitan'},
+  { id: 'xoxoxoxoxxxox', name: 'Neopolitan 2'},
+  { id: 'xoxoxoxxxoxox', name: 'Neopolitan 3'},
+  { id: 'xoxoxxxoxoxox', name: 'Neopolitan 4'},
+  { id: 'xoxxxoxoxoxox', name: 'Neopolitan 5'},
+  { id: 'xxxoxoxoxoxox', name: 'Neopolitan 6'},
+  { id: 'xxoxoxoxoxoxx', name: 'Neopolitan 7'},
+
   // TODO
-  // * Double harmonic
-  // * Harmonic Phrygian
-  // * Harmonic Locrian
   // * Harmonic Mixolydian
   // * Harmonic Lydian
-  // * Neopolitan
 
   { id: 'xoxoxooxoxoox', name: 'major pentatonic'},
   { id: 'xoxooxoxooxox', name: 'dorian pentatonic'},

@@ -4,7 +4,7 @@ import { SCALE_FILTERS } from './filters'
 import { ALL_SCALES } from './constants'
 import Scale from './components/Scale'
 import Checkboxes from './components/Checkboxes'
-import { generateScaleId } from './util'
+import { generateScaleId, getSharpnessOfScale } from './util'
 import { ScaleArray } from './types'
 import './initialize' // populate default scale names
 import Checkbox from './components/Checkbox'
@@ -38,17 +38,6 @@ const sortScalesByModeGroup = (scales: ScaleArray[]): ScaleArray[] => {
   return flattenedModeGroups.map(modeGroup => {
     return modeGroup.split('').map(chr => chr === 'x').concat([true])
   }) as ScaleArray[]
-
-}
-
-// Assigns a numerical sharpness to a scale. Notes towards
-// the beginning are worth less, notes towards the end more,
-// linearly.
-const getSharpnessOfScale = (scale: ScaleArray): number => {
-  return scale.reduce((num, played, index) => {
-    if (played) return num + index
-    else return num
-  }, 0)
 }
 
 const sortScalesBySharpness = (scales: ScaleArray[]): ScaleArray[] => {
@@ -99,7 +88,7 @@ function App() {
         <p>[Click to listen] (Edit name)</p>
         {
           scales.map(
-            (scale, index) => <Scale scale={scale} key={'scale-' + index} name={getNameForScale(scale)} onNameChange={onScaleNameChange(scale)}/>
+            (scale, index) => <Scale scale={scale} key={'scale-' + index} name={getSavedNameForScale(scale)} onNameChange={onScaleNameChange(scale)}/>
           )
         }
       </header>
@@ -109,7 +98,7 @@ function App() {
 
 export default App
 
-const getNameForScale = (scale: ScaleArray) => {
+const getSavedNameForScale = (scale: ScaleArray) => {
   const id = generateScaleId(scale)
   const name = localStorage.getItem('name-' + id) || '--'
   return name

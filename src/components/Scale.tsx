@@ -39,7 +39,7 @@ export default function Scale(props: ScaleProps) {
 
   return (
     <div style={style}>
-      <code onClick={onClick} style={{ cursor: 'pointer', marginRight: '10px' }}>
+      <code onClick={onClick} onTouchEnd={onClick} style={{ cursor: 'pointer', marginRight: '10px' }}>
         [{generateScaleId(scale)}]
       </code>
       <code>

@@ -2,17 +2,17 @@ import './App.css'
 import { useState } from 'react'
 import { SCALE_FILTERS } from './filters'
 import { ALL_SCALES } from './constants'
-import Scale from './components/Scale'
 import Checkboxes from './components/Checkboxes'
 import { generateScaleId, getSharpnessOfScale } from './util'
 import { ScaleArray } from './types'
 import './initialize' // populate default scale names
 import Checkbox from './components/Checkbox'
+import ScaleGroup from './components/ScaleGroup'
 
-const sortScalesByModeGroup = (scales: ScaleArray[]): ScaleArray[] => {
+const sortScalesByModeGroup = (scales: ScaleArray[]): ScaleArray[][] => {
   type TwelveLetterString = string
-  type ModeGroup = TwelveLetterString[][]
-  let modeGroups: ModeGroup = []
+  type ModeGroup = TwelveLetterString[]
+  let modeGroups: ModeGroup[] = []
 
   scales.forEach(scale => {
     const id = generateScaleId(scale).slice(0, 12) // We don't want the last x here
@@ -33,11 +33,11 @@ const sortScalesByModeGroup = (scales: ScaleArray[]): ScaleArray[] => {
     }
   })
 
-  // Transform our 12 x's or o's into a ScaleArray
-  const flattenedModeGroups = modeGroups.flat()
-  return flattenedModeGroups.map(modeGroup => {
-    return modeGroup.split('').map(chr => chr === 'x').concat([true])
-  }) as ScaleArray[]
+  return modeGroups.map(modeGroup => {
+    return modeGroup.map(scaleString => {
+      return scaleString.split('').map(chr => chr === 'x').concat([true]) as ScaleArray
+    })
+  })
 }
 
 const sortScalesBySharpness = (scales: ScaleArray[]): ScaleArray[] => {
@@ -57,12 +57,18 @@ function App() {
   const [isSortedByModeGroup, setIsSortedByModeGroup] = useState(true)
   const [scaleLengths, setScaleLengths] = useState<number[]>([7])
 
-  let scales = ALL_SCALES
+  let flatScales = ALL_SCALES
     .filter(SCALE_FILTERS.endsInTonic)
     .filter(SCALE_FILTERS.hasNNotes(scaleLengths))
 
-  if (isSortedBySharpness) scales = sortScalesBySharpness(scales)
-  if (isSortedByModeGroup) scales = sortScalesByModeGroup(scales)
+  let modeGroups: ScaleArray[][] = [] // grouped by modes
+
+  if (isSortedBySharpness) flatScales = sortScalesBySharpness(flatScales)
+  if (isSortedByModeGroup) modeGroups = sortScalesByModeGroup(flatScales)
+
+  if (!modeGroups) {
+    modeGroups = [flatScales]
+  }
 
   const toggleNoteNumber = (scaleLs: typeof scaleLengths, n: number) => {
     if (scaleLs.includes(n)) {
@@ -84,13 +90,13 @@ function App() {
         <Checkbox label='sort by sharpness' checked={isSortedBySharpness} onChange={() => setIsSortedBySharpness(!isSortedBySharpness)}/>
         <Checkbox label='sort by mode group' checked={isSortedByModeGroup} onChange={() => setIsSortedByModeGroup(!isSortedByModeGroup)}/>
         <Checkboxes scaleLengths={scaleLengths} toggleNoteNumber={toggleNoteNumber} />
-        <p>({scales.length} scales)</p>
+        <p>({flatScales.length} scales)</p>
         <p>[Click to listen] (Edit name)</p>
-        {
-          scales.map(
-            (scale, index) => <Scale scale={scale} key={'scale-' + index} name={getSavedNameForScale(scale)} onNameChange={onScaleNameChange(scale)}/>
-          )
-        }
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>{
+          modeGroups.map((scaleArrays, index) => {
+            return <ScaleGroup scales={scaleArrays} key={'ScaleGroup-' + index}/>
+          })
+        }</div>
       </header>
     </div>
   )
@@ -98,13 +104,3 @@ function App() {
 
 export default App
 
-const getSavedNameForScale = (scale: ScaleArray) => {
-  const id = generateScaleId(scale)
-  const name = localStorage.getItem('name-' + id) || '--'
-  return name
-}
-
-const onScaleNameChange = (scale: ScaleArray) => (newName: string) => {
-  const id = generateScaleId(scale)
-  localStorage.setItem('name-' + id, newName)
-}

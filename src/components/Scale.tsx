@@ -14,12 +14,6 @@ type ScaleProps = {
 export default function Scale(props: ScaleProps) {
   const { scale, name, onNameChange } = props
 
-  const style = {
-    display: 'inline-block',
-    alignSelf: 'flex-start',
-    marginLeft: '40vw',
-  }
-
   const onClick = async () => {
     await Tone.start()
 
@@ -38,7 +32,7 @@ export default function Scale(props: ScaleProps) {
   }
 
   return (
-    <div style={style}>
+    <div>
       <code onClick={onClick} onTouchEnd={onClick} style={{ cursor: 'pointer', marginRight: '10px' }}>
         [{generateScaleId(scale)}]
       </code>

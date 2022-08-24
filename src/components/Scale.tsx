@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { ScaleArray } from '../types'
+import { DisplayType, ScaleArray } from '../types'
 import { NOTES } from '../constants'
 import { generateScaleId } from '../util'
 
@@ -9,17 +9,18 @@ type ScaleProps = {
   scale: ScaleArray
   name: string
   onNameChange: (newName: string) => void
+  displayType: DisplayType
 }
 
 export default function Scale(props: ScaleProps) {
-  const { scale, name, onNameChange } = props
+  const { scale, name, onNameChange, displayType } = props
+
+  const notes = scale.map((bit, index) => {
+    return bit ? NOTES[index] : null
+  }).filter(Boolean) as string[]
 
   const onClick = async () => {
     await Tone.start()
-
-    const notes = scale.map((bit, index) => {
-      return bit ? NOTES[index] : null
-    }).filter(Boolean) as string[]
 
     notes.forEach((note, index) => {
       synth.triggerAttackRelease(note, "8n", Tone.now() + (index / 3))
@@ -31,10 +32,17 @@ export default function Scale(props: ScaleProps) {
     onNameChange(newContent)
   }
 
+  let scaleDisplay: string
+
+  switch(displayType) {
+    case 'literal': scaleDisplay = generateScaleId(scale); break
+    case 'notes': scaleDisplay = notes.join(', '); break
+  }
+
   return (
     <div>
       <code onClick={onClick} onTouchEnd={onClick} style={{ cursor: 'pointer', marginRight: '10px' }}>
-        [{generateScaleId(scale)}]
+        [{scaleDisplay}]
       </code>
       <code>
         (<span contentEditable suppressContentEditableWarning onInput={onChange}>{name}</span>)
@@ -42,4 +50,3 @@ export default function Scale(props: ScaleProps) {
     </div>
   )
 }
-

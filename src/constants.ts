@@ -17,7 +17,7 @@ const generateAllScales = (): ScaleArray[] => {
 
 export const ALL_SCALES = generateAllScales()
 
-export const NOTES = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', 'C5']
+export const NOTES = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'F#4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4', 'C5']
 
 export const SCALE_NAMES = [
   { id: 'xoxoxxoxoxoxx', name: 'major/ionian'},

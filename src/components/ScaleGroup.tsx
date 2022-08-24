@@ -1,13 +1,14 @@
-import { ScaleArray } from "../types"
+import { DisplayType, ScaleArray } from "../types"
 import { generateScaleId } from "../util"
 import Scale from "./Scale"
 
 type ScaleGroupProps = {
   scales: ScaleArray[]
+  displayType: DisplayType
 }
 
 const ScaleGroup = (props: ScaleGroupProps) => {
-  const { scales } = props
+  const { scales, displayType } = props
 
   const style = {
     margin: '5px',
@@ -21,7 +22,7 @@ const ScaleGroup = (props: ScaleGroupProps) => {
       {
         scales.map((scale, index) => {
           return (
-            <Scale scale={scale} key={'scale-' + index} name={getSavedNameForScale(scale)} onNameChange={onScaleNameChange(scale)}/>
+            <Scale scale={scale} displayType={displayType} name={getSavedNameForScale(scale)} onNameChange={onScaleNameChange(scale)} key={'scale-' + index}/>
           )
         })
       }

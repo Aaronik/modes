@@ -36,7 +36,7 @@ export default function Scale(props: ScaleProps) {
 
   switch(displayType) {
     case 'literal': scaleDisplay = generateScaleId(scale); break
-    case 'notes': scaleDisplay = notes.join(', '); break
+    case 'notes': scaleDisplay = notes.map(note => note.slice(0, note.length - 1)).join(', '); break
   }
 
   return (

@@ -1,5 +1,6 @@
 import { ScaleArray } from "./types"
 
+
 // All possible scales of any size within our chromatic system (12tet [12 ton equal temperment])
 const generateAllScales = (): ScaleArray[] => {
   const scales: ScaleArray[] = []

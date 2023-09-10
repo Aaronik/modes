@@ -21,6 +21,29 @@ export const ALL_SCALES = generateAllScales()
 export const NOTES = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'F#4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4', 'C5']
 
 export const SCALE_NAMES = [
+   // 1 Note Scales, Monads
+  // 1.1 Unison
+  { id: 'xooooooooooox', name: Unison}, // 0
+    // 2 note scales, Diads
+    // 2.1 Minor Second and Major Seventh
+  { id: 'xxoooooooooox', name: Minor Second}, // 0-1
+  { id: 'xooooooooooxx', name: Major Seventh}, // 0-11
+  // 2.2 Major Second and Minor Seventh
+  { id: 'xoxooooooooox', name: Major Second}, // 0-2
+  { id: 'xoooooooooxox', name: Minor Seventh}, // 0-10
+  // 2.3 Minor Third and Major Sixth
+  { id: 'xooxoooooooox', name: Minor Third}, // 0-3
+  { id: 'xooooooooxoox', name: Major Sixth}, // 0-9
+  // 2.4 Major Third and Minor Sixth
+  { id: 'xoooxooooooox', name: Major Third}, // 0-4
+  { id: 'xoooooooxooox', name: Minor Sixth}, // 0-8
+  // 2.5 Perfect Fourth and Perfect Fifth
+  { id: 'xooooxoooooox', name: Perfect Fourth}, // 0-5
+  { id: 'xooooooxoooox', name: Perfect Fifth}, // 0-7
+  // 2.6 Tritone
+   { id: 'xoooooxooooox', name: Tritone}, // 0-6
+    // 7 Note Scales, Heptatonic Scales
+  // 7.1 Modes of the Major Scale
   { id: 'xoxoxxoxoxoxx', name: 'major/ionian'}, // 0-5-7
   { id: 'xoxxoxoxoxxox', name: 'dorian'},
   { id: 'xxoxoxoxxoxox', name: 'phrygian'},

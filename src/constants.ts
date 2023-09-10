@@ -42,6 +42,31 @@ export const SCALE_NAMES = [
   { id: 'xooooooxoooox', name: Perfect Fifth}, // 0-7
   // 2.6 Tritone
    { id: 'xoooooxooooox', name: Tritone}, // 0-6
+  // 3 Note Scales, Triads
+  // 3.1 Three Note Chromatic
+   { id: 'xxxooooooooox', name: Chromatic Trichord}, // 0-1-2
+   { id: 'xxoooooooooxx', name: Min2 Maj7 Triad}, // 0-1-11
+   { id: 'xoooooooooxxx', name: Aug6 Maj7 Triad}, // 0-10-11
+  // 3.2 Octatonic Trichord
+   { id: 'xxoxoooooooox', name: Octatonic Trichord}, // 0-1-3
+   { id: 'xoxooooooooxx', name: Maj2 Maj7 Triad}, // 0-2-11
+   { id: 'xooooooooxxox', name: Maj6 Min7 Triad}, // 0-9-10
+  // 3.3 Minor Trichord
+   { id: 'xoxxoooooooox', name: Minor Trichord}, // 0-2-3
+   { id: 'xxooooooooxox', name: Min2 Min7 Triad}, // 0-1-10
+   { id: 'xooooooooxoxx', name: Maj6 Maj7 Triad}, // 0-9-11
+  // 3.4 Min3 Maj7 Triad
+   { id: 'xxooxooooooox', name: Min2 Maj3 Triad}, // 0-1-4
+   { id: 'xooxoooooooxx', name: Min3 Maj7 Triad}, // 0-3-11
+   { id: 'xoooooooxxoox', name: Min6 Dim7 Triad}, // 0-8-9
+  // 3.5 Major Trichord
+   { id: 'xoxoxooooooox', name: Major Trichord}, // 0-2-4
+   { id: 'xoxoooooooxox', name: Maj 2 b7 Triad}, // 0-2-10
+   { id: 'xoooooooxoxox', name: b6 b7 Triad}, // 0-8-10
+  // 3.6 Maj7 Triad No Fifth
+   { id: 'xxoooxoooooox', name: Maj7 Chord Third Inversion}, // 0-1-5
+   { id: 'xooooooxxooox', name: Maj7 Chord Second Inversion}, // 0-7-8
+   { id: 'xoooxooooooxx', name: Maj7 Chord no Fifth}, // 0-4-11
     // 7 Note Scales, Heptatonic Scales
   // 7.1 Modes of the Major Scale
   { id: 'xoxoxxoxoxoxx', name: 'major/ionian'}, // 0-5-7

@@ -43,11 +43,11 @@ export const SCALE_NAMES = [
   // 2.6 Tritone
    { id: 'xoooooxooooox', name: Tritone}, // 0-6
   // 3 Note Scales, Triads
-  // 3.01 Three Note Chromatic
+  // 3.01 Chromatic Trichord
    { id: 'xxxooooooooox', name: Chromatic Trichord}, // 0-1-2
    { id: 'xxoooooooooxx', name: Min2 Maj7 Triad}, // 0-1-11
    { id: 'xoooooooooxxx', name: Aug6 Maj7 Triad}, // 0-10-11
-  // 3.02 Octatonic Trichord
+  // 3.02 Upper Minor Trichord
    { id: 'xxoxoooooooox', name: Upper Minor Trichord}, // 0-1-3
    { id: 'xoxooooooooxx', name: Maj2 Maj7 Triad}, // 0-2-11
    { id: 'xooooooooxxox', name: Maj6 Min7 Triad}, // 0-9-10
@@ -102,7 +102,7 @@ export const SCALE_NAMES = [
   // 3.15 Suspended Triad
   { id: 'xoxooooxoooox', name: Sus2 Triad}, // 0-2-7
   { id: 'xooooxoxoooox', name: Sus4 Triad}, // 0-5-7
-  { id: 'xooooxooooxox', name: Sus4 Triad Second Inversion}, // 0-5-7
+  { id: 'xooooxooooxox', name: Sus4 Triad Second Inversion}, // 0-5-10
   // 3.16 Maj3 #4 Triad
   { id: 'xoooxoxooooox', name: Maj3 #4 Triad}, // 0-4-6
   { id: 'xoxoooooxooox', name: Maj2 b6 Triad}, // 0-2-8

@@ -43,8 +43,8 @@ export const SCALE_NAMES = [
   // 2.6 Tritone
    { id: 'xoooooxooooox', name: Tritone}, // 0-6
   // 3 Note Scales, Triads
-  // 3.01 Chromatic Trichord
-   { id: 'xxxooooooooox', name: Chromatic Trichord}, // 0-1-2
+  // 3.01 Chromatic Triad
+   { id: 'xxxooooooooox', name: Chromatic Triad}, // 0-1-2
    { id: 'xxoooooooooxx', name: Min2 Maj7 Triad}, // 0-1-11
    { id: 'xoooooooooxxx', name: Aug6 Maj7 Triad}, // 0-10-11
   // 3.02 Upper Minor Trichord
@@ -117,7 +117,25 @@ export const SCALE_NAMES = [
   { id: 'xooooxoooxoox', name: Major Triad Second Inversion}, // 0-5-9
   // 3.19 Augmented Triad
   { id: 'xoooxoooxooox', name: 'Augmented'}, // 0-4-8
-    // 7 Note Scales, Heptatonic Scales
+  // 4 note scales, Tetrads. 165 scales- 43 mode groups.
+  // 4.01 Chromatic Tetrad
+  { id: 'xxxxoooooooox', name: Chromatic Tetrad}
+  { id: 'xxxooooooooxx', name: b2 o3 maj7}
+  { id: 'xxooooooooxxx', name: b2 +6 Maj7}
+  { id: 'xooooooooxxxx', name: Chromatic Tetrad}
+// 4.43 Fully Diminished Seventh
+{ id: 'xooxooxooxoox', name: Fully Diminished Seventh}
+// 5 Note Scales, Pentatonic Scales. 330 scales- 66 mode groups.
+// 5.66 Major Pentatonic
+  { id: 'xoxoxooxoxoox', name: 'Major Pentatonic'},
+  { id: 'xoxooxoxooxox', name: 'Suspended Pentatonic'},
+  { id: 'xooxoxooxoxox', name: 'Blues Minor'},
+  { id: 'xoxooxoxoxoox', name: 'Blue Major'},
+  { id: 'xooxoxoxooxox', name: 'Minor pentatonic'},
+// 6 Note Scales, Hexatonic Scales. 462 scales, 79 mode groups.
+// 6.79 Whole Tone  
+{ id: 'xoxoxoxoxoxox', name: 'whole tone'},
+    // 7 Note Scales, Heptatonic Scales. 462 scales- 66 mode groups.
   // 7.1 Modes of the Major Scale
   { id: 'xoxoxxoxoxoxx', name: 'major/ionian'}, // 0-5-7
   { id: 'xoxxoxoxoxxox', name: 'dorian'},
@@ -199,16 +217,10 @@ export const SCALE_NAMES = [
   { id: 'xoxxxooxoxxox', name: 'lydian b2 6'},
   { id: 'xxxooxoxxoxox', name: 'lydian b2 7'},
 
-  { id: 'xoxoxooxoxoox', name: 'major pentatonic'},
-  { id: 'xoxooxoxooxox', name: 'dorian pentatonic'},
-  { id: 'xooxoxooxoxox', name: 'phrygian pentatonic'},
-  { id: 'xoxooxoxoxoox', name: 'mixolydian pentatonic'},
-  { id: 'xooxoxoxooxox', name: 'minor pentatonic'},
-
+  // 8 note scales, Octatonic Scales. 330 scales- 43 mode groups
+    // 8.43 Octatonic Scale
   { id: 'xoxxoxxoxxoxx', name: 'diminished/octotonic'},
   { id: 'xxoxxoxxoxxox', name: 'diminished/octotonic'},
-
-  { id: 'xoxoxoxoxoxox', name: 'whole tone'},
 
 ]
 
